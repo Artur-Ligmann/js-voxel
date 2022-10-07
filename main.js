@@ -33,7 +33,7 @@ imageObj.onload = function(){
     setInterval(draw, 10);
 };
 
-imageObj.src = 'texture.png';
+imageObj.src = 'texture.PNG';
 
 function createArray(width, height) {
     var iMax = width;

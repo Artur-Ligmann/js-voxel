@@ -1,5 +1,5 @@
 /**
- * Created by ligmann on 2015-11-25.
+ * Created by ligmann on 2022-11-25.
  */
 
 var imageObj = new Image();

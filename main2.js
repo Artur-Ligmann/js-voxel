@@ -14,27 +14,27 @@ var canvasHeight = canvas.height;
 var imageData = ctx.getImageData(0, 0, canvasWidth, canvasHeight);
 var data = imageData.data;
 
-// Generate the texture
-var textureCanvas = document.createElement('canvas');
-textureCanvas.width = txtWidth;
-textureCanvas.height = txtHeight;
-var textureCtx = textureCanvas.getContext('2d');
-
-var textureData = textureCtx.createImageData(txtWidth, txtHeight);
-var textureDataArray = textureData.data;
-
-for (var i = 0; i < textureDataArray.length; i += 4) {
-  textureDataArray[i] = Math.floor(Math.random() * 256);
-  textureDataArray[i + 1] = Math.floor(Math.random() * 256);
-  textureDataArray[i + 2] = Math.floor(Math.random() * 256);
-  textureDataArray[i + 3] = 255;
-}
-
-textureCtx.putImageData(textureData, 0, 0);
-
-txt = textureDataArray;
-
+generateTexture();
 setInterval(draw, 10);
+
+function generateTexture() {
+    var textureCanvas = document.createElement('canvas');
+    textureCanvas.width = txtWidth;
+    textureCanvas.height = txtHeight;
+    var textureCtx = textureCanvas.getContext('2d');
+
+    var textureData = textureCtx.createImageData(txtWidth, txtHeight);
+    var textureDataArray = textureData.data;
+
+    for (var i = 0; i < textureDataArray.length; i += 4) {
+        textureDataArray[i] = Math.floor(Math.random() * 256);
+        textureDataArray[i + 1] = Math.floor(Math.random() * 256);
+        textureDataArray[i + 2] = Math.floor(Math.random() * 256);
+        textureDataArray[i + 3] = 255;
+    }
+    textureCtx.putImageData(textureData, 0, 0);
+    txt = textureDataArray;
+}
 
 function createArray(width, height) {
     var iMax = width;

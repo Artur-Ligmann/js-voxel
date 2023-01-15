@@ -78,8 +78,8 @@ function draw() {
     var centerY = canvasHeight/2;
     var maximumDistance = Math.sqrt(centerX*centerX + centerX*centerY);
     for (var y = -centerY; y < centerY; y++) {
-        for (varx = -centerX; x < centerX; x++) {
-   var sX = x + centerX;
+        for (var x = -centerX; x < centerX; x++) {
+        var sX = x + centerX;
         var sY = y + centerY;
         var lutEntry = lut[sX][sY];
         var angle = lutEntry.angle;

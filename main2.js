@@ -49,27 +49,33 @@ function createArray(width, height) {
     }
     return f;
 }
+function calculateLut(width, height) {
+    var result = createArray(width, height);
 
-function calculateLut(width, height)
-{
-    var result = createArray(width,height);
+    var centerdX = width / 2;
+    var centeredY = height / 2;
 
-    var centerdX = width/2;
-    var centeredY = height/2;
+    var txtWidth = 256;
+    var txtHeight = 256;
 
     for (var y = -centeredY; y < centeredY; y++) {
         for (var x = -centerdX; x < centerdX; x++) {
             var distance = Math.sqrt(x * x + y * y);
-            var angle = Math.atan2(x,y)/ Math.PI;
+            var phi = Math.atan2(y, x);
+            var theta = Math.acos(distance / centeredY);
+
             var sX = x + centerdX;
             var sY = y + centeredY;
-            result[sX][sY] = {distance: distance, angle:angle};
+
+            var u = (phi + Math.PI) / (2 * Math.PI);
+            var v = theta / Math.PI;
+
+            result[sX][sY] = { u: u, v: v };
         }
     }
+
     return result;
 }
-
-
 function draw() {
 
     var i = 0;
